@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "artoo-leapmotion"
   s.version     = Artoo::Leapmotion::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Your name here"]
-  s.email       = ["your email here"]
-  s.homepage    = "Your homepage here"
-  s.summary     = %q{Artoo adaptor and driver for Leapmotion}
-  s.description = %q{Artoo adaptor and driver for Leapmotion}
+  s.authors     = ["Ron Evans"]
+  s.email       = ["artoo@hybridgroup.com"]
+  s.homepage    = "https://github.com/hybridgroup/artoo-"
+  s.summary     = %q{Artoo adaptor and driver for Leap Motion}
+  s.description = %q{Artoo adaptor and driver for Leap Motion}
 
   s.rubyforge_project = "artoo-leapmotion"
 
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'artoo', '~> 1.0.0.rc2'
+  s.add_runtime_dependency 'hybridgroup-celluloid-websocket-client'
   # TODO: add your development dependencies here
   # EXAMPLE:
   # s.add_development_dependency 'minitest', '~> 5.0'
