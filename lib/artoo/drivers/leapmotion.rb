@@ -1,4 +1,5 @@
 require 'artoo/drivers/driver'
+require 'json'
 
 module Artoo
   module Drivers
@@ -11,6 +12,9 @@ module Artoo
           connection.handler = current_actor
           connection.start
 
+          data = JSON.dump({"enableGestures" => true})
+          connection.text(data)
+
           super
         rescue Exception => e
           Logger.error "Error starting Leapmotion driver!"
@@ -20,17 +24,14 @@ module Artoo
       end
 
       def on_open
-        debug("websocket connection opened")
         publish(event_topic_name("open"))
       end
 
       def on_message(data)
-        info("message: #{data.inspect}")
         publish(event_topic_name("message"), data)
       end
 
       def on_close(code, reason)
-        debug("websocket connection closed: #{code.inspect}, #{reason.inspect}")
         publish(event_topic_name("close"), code, reason)
       end
     end
