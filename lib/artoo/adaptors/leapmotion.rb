@@ -12,12 +12,13 @@ module Artoo
       # Closes connection with device if connected
       # @return [Boolean]
       def finalize
+        disconnect if connected?
       end
 
       # Creates a connection with device
       # @return [Boolean]
       def connect
-        #@leap = Celluloid::WebSocket::Client.new("ws://127.0.0.1:6437", current_actor)
+        @leap = Celluloid::WebSocket::Client.new("ws://#{port.host}:#{port.port}")
 
         super
       end
@@ -28,21 +29,6 @@ module Artoo
         leap.close
 
         super
-      end
-
-      def on_open
-        debug("websocket connection opened")
-      end
-
-      def on_message(data)
-        @counter += 1
-        info("message: #{data.inspect}")
-
-        @client.close if @counter > 5
-      end
-
-      def on_close(code, reason)
-        debug("websocket connection closed: #{code.inspect}, #{reason.inspect}")
       end
 
       # Uses method missing to call device actions

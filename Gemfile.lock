@@ -30,7 +30,12 @@ GEM
     hybridgroup-celluloid-websocket-client (0.0.3)
       celluloid-io
       websocket-driver
+    metaclass (0.0.1)
     method_source (0.8.2)
+    minitest (5.0.6)
+    minitest-happy (1.0.0)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.7.7)
     nio4r (0.4.6)
     pry (0.9.12.2)
@@ -57,3 +62,6 @@ PLATFORMS
 
 DEPENDENCIES
   artoo-leapmotion!
+  minitest (~> 5.0)
+  minitest-happy
+  mocha (~> 0.14.0)

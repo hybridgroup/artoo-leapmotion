@@ -21,9 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'artoo', '~> 1.0.0.rc2'
   s.add_runtime_dependency 'hybridgroup-celluloid-websocket-client'
-  # TODO: add your development dependencies here
-  # EXAMPLE:
-  # s.add_development_dependency 'minitest', '~> 5.0'
-  # s.add_development_dependency 'minitest-happy'
-  # s.add_development_dependency 'mocha', '~> 0.14.0'
+  s.add_development_dependency 'minitest', '~> 5.0'
+  s.add_development_dependency 'minitest-happy'
+  s.add_development_dependency 'mocha', '~> 0.14.0'
 end
