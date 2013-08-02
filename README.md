@@ -49,13 +49,15 @@ end
 
 ## Connecting to Leap Motion
 
-Download the correct version of the Leap Motion software from 
-
 ### OSX
 
-Instructions here...
+The normal OSX download of the Leap Motion software from https://www.leapmotion.com/setup should work with Artoo.
+
+More instructions need to go here...
 
 ### Ubuntu
+
+The Linux download of the Leap Motion software can be obtained from https://developer.leapmotion.com/downloads (requires free signup)
 
 The main steps are:
 - Connect your computer and the Leap Motion controller
@@ -71,4 +73,6 @@ Once your computer is communcating with the Leap Motion controller, the `leapd` 
 
 ### Windows
 
-Instructions go here...
+The normal Windows download of the Leap Motion software from https://www.leapmotion.com/setup should work with Artoo.
+
+More instructions need to go here...
