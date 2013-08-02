@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo-leapmotion (0.0.1)
+    artoo-leapmotion (0.1.0)
       artoo (~> 1.0.0.rc2)
       hybridgroup-celluloid-websocket-client
 

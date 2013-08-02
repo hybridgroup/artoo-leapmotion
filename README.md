@@ -8,6 +8,8 @@ Artoo is a open source micro-framework for robotics using Ruby.
 
 For more information abut Artoo, check out our repo at https://github.com/hybridgroup/artoo
 
+[![Code Climate](https://codeclimate.com/github/hybridgroup/artoo-leapmotion.png)](https://codeclimate.com/github/hybridgroup/artoo-leapmotion) [![Build Status](https://travis-ci.org/hybridgroup/artoo-leapmotion.png?branch=master)](https://travis-ci.org/hybridgroup/artoo-leapmotion)
+
 ## Installing
 
 ```
