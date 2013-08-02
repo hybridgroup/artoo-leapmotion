@@ -14,7 +14,11 @@ def on_open(*args)
 end
 
 def on_frame(*args)
-  puts args
+  frame = args[1]
+  puts frame
+  puts frame.hands
+  puts frame.gestures
+  puts frame.pointables
 end
 
 def on_close(*args)
