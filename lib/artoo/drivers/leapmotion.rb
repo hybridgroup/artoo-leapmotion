@@ -1,4 +1,5 @@
 require 'artoo/drivers/driver'
+require 'artoo/drivers/leapmotion/frame'
 require 'json'
 
 module Artoo
@@ -12,9 +13,6 @@ module Artoo
           connection.handler = current_actor
           connection.start
 
-          data = JSON.dump({"enableGestures" => true})
-          connection.text(data)
-
           super
         rescue Exception => e
           Logger.error "Error starting Leapmotion driver!"
@@ -25,10 +23,16 @@ module Artoo
 
       def on_open
         publish(event_topic_name("open"))
+        data = JSON.dump("enableGestures" => true)
+        connection.text(data)
       end
 
       def on_message(data)
-        publish(event_topic_name("message"), data)
+        message = JSON.parse(data)
+        if message.key?("id") and message.key?("timestamp")
+          frame = Artoo::Drivers::Leapmotion::Frame.new(message)
+          publish(event_topic_name("frame"), frame)
+        end
       end
 
       def on_close(code, reason)

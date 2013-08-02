@@ -5,7 +5,7 @@ device :leapmotion, :driver => :leapmotion
   
 work do
   on leapmotion, :open => :on_open
-  on leapmotion, :message => :on_message
+  on leapmotion, :frame => :on_frame
   on leapmotion, :close => :on_close
 end
 
@@ -13,7 +13,7 @@ def on_open(*args)
   puts args
 end
 
-def on_message(*args)
+def on_frame(*args)
   puts args
 end
 
