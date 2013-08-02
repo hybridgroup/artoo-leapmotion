@@ -32,7 +32,13 @@ module Artoo
         if message.key?("id") and message.key?("timestamp")
           frame = Artoo::Drivers::Leapmotion::Frame.new(message)
           publish(event_topic_name("frame"), frame)
+
+          frame.gestures.each {|g| publish(event_topic_name("gesture"), g)}
+        else
+          publish(event_topic_name("error"), data)
         end
+      rescue Exception => e
+        publish(event_topic_name("error"), data)
       end
 
       def on_close(code, reason)
