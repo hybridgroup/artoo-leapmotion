@@ -61,7 +61,7 @@ The main steps are:
 
 ### Ubuntu
 
-The Linux download of the Leap Motion software can be obtained from https://developer.leapmotion.com/downloads (requires free signup)
+The Linux download of the Leap Motion software can be obtained from [Leap Motion Dev Center](https://developer.leapmotion.com/downloads) (requires free signup)
 
 The main steps are:
 
