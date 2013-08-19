@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    artoo-leapmotion (0.1.1)
-      artoo (~> 1.0.0.rc2)
+    artoo-leapmotion (0.1.2)
+      artoo (~> 1.0.0)
       hybridgroup-celluloid-websocket-client
 
 GEM
   remote: http://rubygems.org/
   specs:
-    artoo (1.0.0.rc3)
+    artoo (1.0.0)
       celluloid (~> 0.14.1)
       celluloid-io (~> 0.14.1)
       multi_json (~> 1.6)
@@ -36,8 +36,8 @@ GEM
     minitest-happy (1.0.0)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.7.7)
-    nio4r (0.4.6)
+    multi_json (1.7.9)
+    nio4r (0.5.0)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -53,7 +53,7 @@ GEM
     slop (3.4.6)
     thor (0.18.1)
     timers (1.1.0)
-    websocket-driver (0.2.1)
+    websocket-driver (0.2.3)
     websocket_parser (0.1.4)
       http
 
