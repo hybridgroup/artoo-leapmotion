@@ -19,6 +19,18 @@ module Artoo
             self.class.send(:define_method, k.to_sym, lambda { instance_variable_get("@#{k}") })
           end
         end
+
+        def palm_x
+          palmPosition[0] if palmPosition
+        end
+
+        def palm_y
+          palmPosition[2] if palmPosition
+        end
+
+        def palm_z
+          palmPosition[1] if palmPosition
+        end
       end
     end
   end
