@@ -15,7 +15,9 @@ describe Artoo::Drivers::Leapmotion do
     @connection = mock('connection')
     @device.stubs(:connection).returns(@connection)
     @frame = mock('frame')
+    @frame.stubs(:hands).returns([])
     @frame.stubs(:gestures).returns([])
+    @frame.stubs(:pointables).returns([])
     Artoo::Drivers::Leapmotion::Frame.stubs(:new).returns(@frame)
   end
 

@@ -33,9 +33,9 @@ module Artoo
           frame = Artoo::Drivers::Leapmotion::Frame.new(message)
           publish(event_topic_name("frame"), frame)
 
-          frame.hands.each {|h| publish(event_topic_name("hand"), h)}
-          frame.gestures.each {|g| publish(event_topic_name("gesture"), g)}
-          frame.pointables.each {|p| publish(event_topic_name("pointable"), p)}
+          frame.hands.each {|h| publish(event_topic_name("hand"), h)} if frame.hands
+          frame.gestures.each {|g| publish(event_topic_name("gesture"), g)} if frame.gestures
+          frame.pointables.each {|p| publish(event_topic_name("pointable"), p)} if frame.pointables
         else
           publish(event_topic_name("error"), data)
         end
