@@ -13,15 +13,10 @@ def on_open(*args)
   puts args
 end
 
-def on_hand(*args)
-  hand = args[1]
-  puts "#{scale_to_servo(hand.palm_x, -200, 200)},#{scale_to_servo(hand.palm_y, -130, 130)}" if hand
+def on_hand(sender, hand)
+  puts "#{hand.palm_x},#{hand.palm_y},#{hand.palm_z}" if hand
 end
 
 def on_close(*args)
   puts args
-end
-
-def scale_to_servo(val, min, max)
-  (((val - min) / (max - min)) * 180).ceil
 end
