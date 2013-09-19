@@ -73,4 +73,4 @@ The main steps are:
 
 The normal Windows download of the Leap Motion software from https://www.leapmotion.com/setup should work with Artoo.
 
-More instructions need to go here...
+We are currently working with the Celluloid team to add Windows support. Please check back soon!
