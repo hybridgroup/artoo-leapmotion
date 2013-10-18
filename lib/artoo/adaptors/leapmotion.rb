@@ -6,14 +6,7 @@ module Artoo
     # Connect to a leapmotion device
     # @see device documentation for more information
     class Leapmotion < Adaptor
-      finalizer :finalize
       attr_reader :leap
-
-      # Closes connection with device if connected
-      # @return [Boolean]
-      def finalize
-        disconnect if connected?
-      end
 
       # Creates a connection with device
       # @return [Boolean]
