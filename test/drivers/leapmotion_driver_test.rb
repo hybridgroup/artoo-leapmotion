@@ -30,14 +30,14 @@ describe Artoo::Drivers::Leapmotion do
   it 'Leapmotion#on_message with a frame but no gesture' do
     @device.expects(:event_topic_name).with("frame")
     @device.expects(:event_topic_name).with("gesture").never
-    @driver.on_message(JSON.dump(valid_frame))
+    @driver.on_message(frame_json)
   end
 
   it 'Leapmotion#on_message with a gesture' do
     @device.expects(:event_topic_name).with("frame")
     @device.expects(:event_topic_name).with("gesture")
     @frame.stubs(:gestures).returns(['123'])
-    @driver.on_message(JSON.dump(valid_frame))
+    @driver.on_message(frame_json)
   end
 
   it 'Leapmotion#error' do
