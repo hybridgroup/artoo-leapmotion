@@ -35,6 +35,10 @@ module Artoo
           const_get(name).new(data)
         end
 
+        def start_position
+          @startPosition
+        end
+
         private
 
         def self.class_exists?(class_name)
