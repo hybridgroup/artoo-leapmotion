@@ -26,6 +26,14 @@ module Artoo
             )
           end
         end
+
+        def touch_zone
+          @touchZone
+        end
+
+        def tip_position
+          @tipPosition
+        end
       end
     end
   end
