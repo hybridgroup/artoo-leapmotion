@@ -13,14 +13,15 @@ module Artoo
       class Gesture
         class Error < StandardError; end
 
+        # Public: Iterates through LeapMotion frame data, extracting all Hand
+        # JSON into new Leapmotion::Hand objects.
+        #
+        # data - a LeapMotion frame that may or may not contain hand data
+        #
+        # Returns an array containing all Hands found in the frame
         def self.list(data)
-          gestures = []
-          if data["gestures"]
-            data["gestures"].each do |gesture|
-              gestures << make_gesture(gesture)
-            end
-          end
-          return gestures
+          return [] unless data["gestures"]
+          data["gestures"].map { |gesture| make_gesture gesture }
         end
 
         def self.make_gesture(data)
