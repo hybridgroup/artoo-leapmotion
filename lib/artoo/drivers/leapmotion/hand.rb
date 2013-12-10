@@ -36,6 +36,14 @@ module Artoo
         def palm_z
           palmPosition[1] if palmPosition
         end
+
+        def rotation
+          {
+            axis: @r[0],
+            angle: @r[1],
+            matrix: @r[2]
+          }
+        end
       end
     end
   end
