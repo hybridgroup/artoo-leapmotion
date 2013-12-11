@@ -28,10 +28,13 @@ module Artoo
           unless data.has_key? "type"
             raise Error, "gesture type unknown"
           end
+
           name = data["type"][0].upcase << data["type"][1..-1]
+
           unless class_exists?(name)
             raise Error, "gesture class `#{self}::#{name}' invalid"
           end
+
           const_get(name).new(data)
         end
 
@@ -39,29 +42,28 @@ module Artoo
           @startPosition
         end
 
+        def initialize(data)
+          data.each do |key, value|
+            instance_variable_set("@#{key}", value)
+            self.class.send(
+              :define_method,
+              key.to_sym,
+              lambda { instance_variable_get("@#{key}") }
+            )
+          end
+        end
+
         private
 
         def self.class_exists?(class_name)
-          klass = const_get(class_name)
-          return klass.is_a?(Class)
+          const_get(class_name).is_a?(Class)
         rescue NameError
-          return false
+          false
         end
 
-        def self.define_gesture *names
-          names.each do |n|
-            name = n.to_s
-            unless class_exists?(name)
-              c = Class.new(self) do
-                def initialize(data)
-                  data.each do |k, v|
-                    instance_variable_set("@#{k}", v)
-                    self.class.send(:define_method, k.to_sym, lambda { instance_variable_get("@#{k}") })
-                  end
-                end
-              end
-              const_set name, c
-            end
+        def self.define_gesture(*names)
+          names.each do |name|
+            const_set name, Class.new(self) unless class_exists?(name)
           end
         end
 
