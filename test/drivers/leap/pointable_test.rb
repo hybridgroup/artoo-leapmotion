@@ -11,7 +11,7 @@ describe Artoo::Drivers::Leapmotion::Pointable do
 
   it "extracts the position of the tip of the pointable" do
     assert pointable.tip_position.is_a?(Array)
-    for number in pointable.tip_position
+    pointable.tip_position.each do |number|
       assert number.is_a?(Float)
     end
   end
