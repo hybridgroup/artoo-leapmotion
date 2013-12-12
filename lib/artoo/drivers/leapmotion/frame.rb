@@ -4,19 +4,28 @@ require 'artoo/drivers/leapmotion/hand'
 
 module Artoo
   module Drivers
-    # The leapmotion driver behaviors
     class Leapmotion < Driver
       class Frame
-        attr_reader :gestures, :pointables, :hands, :id, :timestamp, :r, :s, :t
-        def initialize(data)
-          @hands = Artoo::Drivers::Leapmotion::Hand.list(data)
-          @gestures = Artoo::Drivers::Leapmotion::Gesture.list(data)
-          @pointables = Artoo::Drivers::Leapmotion::Pointable.list(data)
-          @id = data["id"]
-          @timestamp = data["timestamp"]
-          @r = data["r"]
-          @s = data["s"]
-          @t = data["t"]
+        attr_reader :id, :timestamp, :raw, :gestures, :hands, :pointables,
+                    :rotation, :scale_factor, :translation
+
+        def initialize(frame)
+          @id = frame["id"]
+          @timestamp = frame["timestamp"]
+          @raw = frame
+
+          @hands = Artoo::Drivers::Leapmotion::Hand.list(frame)
+          @gestures = Artoo::Drivers::Leapmotion::Gesture.list(frame)
+          @pointables = Artoo::Drivers::Leapmotion::Pointable.list(frame)
+
+          @rotation = {
+            axis: frame['r'][0],
+            angle: frame['r'][1],
+            matrix: frame['r'][2]
+          }
+
+          @scale_factor = frame["s"]
+          @translation = frame["t"]
         end
       end
     end

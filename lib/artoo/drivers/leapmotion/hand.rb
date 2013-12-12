@@ -3,20 +3,25 @@ module Artoo
     # The leapmotion driver behaviors
     class Leapmotion < Driver
       class Hand
+        # Public: Iterates through LeapMotion frame data, extracting all Hand
+        # JSON into new Leapmotion::Hand objects.
+        #
+        # data - a LeapMotion frame that may or may not contain hand data
+        #
+        # Returns an array containing all Hands found in the frame
         def self.list(data)
-          hands = []
-          if data["hands"]
-            data["hands"].each do |hand|
-              hands << Artoo::Drivers::Leapmotion::Hand.new(hand)
-            end
-          end
-          return hands
+          return [] unless data["hands"]
+          data["hands"].map { |hand| Artoo::Drivers::Leapmotion::Hand.new hand }
         end
 
         def initialize(data)
-          data.each do |k, v|
-            instance_variable_set("@#{k}", v)
-            self.class.send(:define_method, k.to_sym, lambda { instance_variable_get("@#{k}") })
+          data.each do |key, value|
+            instance_variable_set "@#{key}", value
+            self.class.send(
+              :define_method,
+              key.to_sym,
+              lambda { instance_variable_get("@#{key}") }
+            )
           end
         end
 
@@ -30,6 +35,14 @@ module Artoo
 
         def palm_z
           palmPosition[1] if palmPosition
+        end
+
+        def rotation
+          {
+            axis: @r[0],
+            angle: @r[1],
+            matrix: @r[2]
+          }
         end
       end
     end
