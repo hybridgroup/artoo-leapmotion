@@ -8,6 +8,10 @@ module Artoo
     class Leapmotion < Driver
 
       # Start driver and any required connections
+
+      # Public: Starts the driver
+      #
+      # Returns nil 
       def start_driver
         begin
           connection.handler = current_actor
@@ -21,12 +25,20 @@ module Artoo
         end
       end
 
+      # Public: On open
+      #
+      # Returns nil 
       def on_open
         publish(event_topic_name("open"))
         data = JSON.dump("enableGestures" => true)
         connection.text(data)
       end
 
+      # Public: On message
+      #
+      # data - params
+      #
+      # Returns nil 
       def on_message(data)
         message = JSON.parse(data)
         if message.key?("id") and message.key?("timestamp")
@@ -43,6 +55,12 @@ module Artoo
         publish(event_topic_name("error"), data)
       end
 
+      # Public: On close
+      #
+      # code - params
+      # reason - params
+      #
+      # Returns nil 
       def on_close(code, reason)
         publish(event_topic_name("close"), code, reason)
       end
