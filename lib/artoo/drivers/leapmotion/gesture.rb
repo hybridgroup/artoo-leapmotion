@@ -24,6 +24,11 @@ module Artoo
           data["gestures"].map { |gesture| make_gesture gesture }
         end
 
+        # Public: Makes a gesture for te leapmotion
+        #
+        # data - params
+        #
+        # Returns an array 
         def self.make_gesture(data)
           unless data.has_key? "type"
             raise Error, "gesture type unknown"
@@ -38,10 +43,18 @@ module Artoo
           const_get(name).new(data)
         end
 
+        # Public: Starts the driver
+        #
+        # Returns an nil 
         def start_position
           @startPosition
         end
 
+        # Public: initialize
+        #
+        # data - params
+        #
+        # Returns nil 
         def initialize(data)
           data.each do |key, value|
             instance_variable_set("@#{key}", value)
@@ -55,12 +68,22 @@ module Artoo
 
         private
 
+        # Public: Class exists
+        #
+        # class_name - params
+        #
+        # Returns nil 
         def self.class_exists?(class_name)
           const_get(class_name).is_a?(Class)
         rescue NameError
           false
         end
 
+        # Public: Define gesture
+        #
+        # *names - params
+        #
+        # Returns nil 
         def self.define_gesture(*names)
           names.each do |name|
             const_set name, Class.new(self) unless class_exists?(name)

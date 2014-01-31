@@ -16,6 +16,11 @@ module Artoo
           end
         end
 
+        # Public: initialize
+        #
+        # data - params
+        #
+        # Returns nil 
         def initialize(data)
           data.each do |key, value|
             instance_variable_set "@#{key}", value
@@ -27,10 +32,16 @@ module Artoo
           end
         end
 
+        # Public: Touch zone
+        #
+        # Returns nil 
         def touch_zone
           @touchZone
         end
 
+        # Public: tip position
+        #
+        # Returns nil 
         def tip_position
           @tipPosition
         end

@@ -9,6 +9,11 @@ module Artoo
         attr_reader :id, :timestamp, :raw, :gestures, :hands, :pointables,
                     :rotation, :scale_factor, :translation
 
+        # Public: initialize
+        #
+        # frame - params
+        #
+        # Returns nil 
         def initialize(frame)
           @id = frame["id"]
           @timestamp = frame["timestamp"]
