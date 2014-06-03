@@ -55,7 +55,7 @@ This driver works out of the box with the vanilla installation of the Leap Motio
 
 The main steps are:
 
-- Run `Leap Motion.app`
+- Run `Leap Motion.app`, it will open a websocket connection in port 6437.
 - Connect your Computer and Leap Motion Controller.
 - Connect to the device via Artoo.
 
@@ -65,7 +65,7 @@ The Linux download of the Leap Motion software can be obtained from [Leap Motion
 
 The main steps are:
 
-- Run the `leapd` daemon.
+- Run the `leapd` daemon, it will open a websocket connection in port 6437.
 - Connect your computer and the Leap Motion controller
 - Connect to the device via Artoo
 
