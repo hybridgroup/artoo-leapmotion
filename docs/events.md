@@ -119,7 +119,7 @@ an array containing all Hands found in the frame
 
 ### self.make_gesture(data)
 
-Makes a gesture for te leapmotion
+Makes a gesture for the leapmotion
 
 ##### Params
 
