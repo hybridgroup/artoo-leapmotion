@@ -24,7 +24,7 @@ module Artoo
           data["gestures"].map { |gesture| make_gesture gesture }
         end
 
-        # Public: Makes a gesture for te leapmotion
+        # Public: Makes a gesture for the leapmotion
         #
         # data - params
         #
